@@ -31,5 +31,25 @@ namespace AspNetCoreToDo.Controllers
             //Render a view with the model data
             return View(model);
         }
+
+        public async Task<IActionResult> AddItem(NewToDoItem toDoItem)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var success = await _toDoItemService.AddItemAsync(toDoItem);
+
+            if (!success)
+            {
+                return BadRequest(new
+                {
+                    error = "Failed to add the item."
+                });
+            }
+
+            return Ok();
+        }
     }
 }

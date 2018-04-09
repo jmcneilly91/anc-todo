@@ -27,5 +27,10 @@ namespace AspNetCoreToDo.Services
 
             return Task.FromResult(items);
         }
+
+        public async Task<bool> AddItemAsync(NewToDoItem toDoItem)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

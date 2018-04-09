@@ -35,7 +35,9 @@ namespace AspNetCoreToDo
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
-            services.AddSingleton<IToDoItemService, MockToDoItemService>();
+            services.AddScoped<IToDoItemService, ToDoItemService>();
+            // For debugging/development
+            //services.AddSingleton<IToDoItemService, MockToDoItemService>();
 
             services.AddMvc();
         }
